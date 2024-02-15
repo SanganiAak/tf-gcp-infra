@@ -23,5 +23,15 @@ variable "app_name" {
 variable "database" {
   type    = string
   default = "db"
+}
 
+variable "route_next_hop_gateway" {
+  type = string
+}
+variable "route_dest_range" {
+  type = string
+}
+
+variable "routing_mode" {
+  type = string
 }
