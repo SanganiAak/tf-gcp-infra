@@ -1,12 +1,9 @@
 name: 'Terraform GitHub Actions'
 
 on:
-  push:
-    branches:
-      - terraform
   pull_request:
-    branches:
-      - main
+    branches: 
+        - main 
 
 jobs:
   terraform:
