@@ -3,7 +3,7 @@ resource "google_compute_network" "vpc" {
   count                           = var.var_count
   name                            = "${var.vpc_name}-${count.index}"
   auto_create_subnetworks         = false
-  routing_mode                    = "REGIONAL"
+  routing_mode                    = var.routing_mode
   delete_default_routes_on_create = true
 }
 
@@ -28,7 +28,7 @@ resource "google_compute_subnetwork" "db" {
 resource "google_compute_route" "webapp_route" {
   count            = var.var_count
   name             = "webapp-route-${count.index}"
-  dest_range       = "0.0.0.0/0"
+  dest_range       = var.route_dest_range
   network          = google_compute_network.vpc[count.index].id
-  next_hop_gateway = "default-internet-gateway"
+  next_hop_gateway = var.route_next_hop_gateway
 }
