@@ -4,10 +4,24 @@ variable "project_id" {
 
 variable "region" {
   description = "The GCP region"
-  default     = "us-central1"
+  default     = "us-east1"
 }
 
 variable "vpc_name" {
   description = "The name of the VPC"
 }
 
+variable "var_count" {
+  default     = 1
+  type        = number
+}
+
+variable "app_name" {
+  type = string
+  default = "webapp"
+}
+variable "database" {
+  type = string
+  default = "db"
+  
+}
