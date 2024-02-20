@@ -32,7 +32,7 @@ jobs:
 
       - name: 'Terraform  Validate'
         id: validate
-        run: terraform init
+        run: terraform validate
 
       # - name: 'Terraform Validate'
       #   id: validate
