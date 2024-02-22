@@ -9,17 +9,19 @@ resource "google_compute_network" "vpc" {
 
 # Subnets
 resource "google_compute_subnetwork" "webapp" {
-  count         = var.var_count
-  name          = "${var.app_name}-${count.index}"
-  ip_cidr_range = "10.0.${count.index}.0/24"
+  count = var.var_count
+  name  = "${var.app_name}-${count.index}"
+  # ip_cidr_range = "${var.subnet_ip}.${count.index}.0/24"
+  ip_cidr_range = var.ip_cidr_range_webapp
   region        = var.region
   network       = google_compute_network.vpc[count.index].id
 }
 
 resource "google_compute_subnetwork" "db" {
-  count         = var.var_count
-  name          = "${var.database}-${count.index}"
-  ip_cidr_range = "10.0.${count.index + 100}.0/24"
+  count = var.var_count
+  name  = "${var.database}-${count.index}"
+  # ip_cidr_range = "${var.subnet_ip}.${count.index + 100}.0/24"
+  ip_cidr_range = var.ip_cidr_range_db
   region        = var.region
   network       = google_compute_network.vpc[count.index].id
 }
