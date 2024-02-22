@@ -1,10 +1,10 @@
 resource "google_compute_firewall" "allow_http_3000" {
-  count        = var.var_count
-  name         = "${var.app_name}-allow-${count.index}"
-  network      = google_compute_network.vpc[count.index].id
-  direction    = "INGRESS"
-  priority     = 1000
-  target_tags  = ["http-server"]
+  count       = var.var_count
+  name        = "${var.app_name}-allow-${count.index}"
+  network     = google_compute_network.vpc[count.index].id
+  direction   = "INGRESS"
+  priority    = 1000
+  target_tags = ["http-server"]
 
   allow {
     protocol = "tcp"
@@ -15,11 +15,11 @@ resource "google_compute_firewall" "allow_http_3000" {
 }
 
 resource "google_compute_firewall" "deny_ssh" {
-  count        = var.var_count
-  name         = "${var.app_name}-deny-ssh-${count.index}"
-  network      = google_compute_network.vpc[count.index].id
-  direction    = "INGRESS"
-  priority     = 1000
+  count     = var.var_count
+  name      = "${var.app_name}-deny-ssh-${count.index}"
+  network   = google_compute_network.vpc[count.index].id
+  direction = "INGRESS"
+  priority  = 1000
 
   deny {
     protocol = "tcp"
