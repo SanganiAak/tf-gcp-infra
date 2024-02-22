@@ -35,3 +35,35 @@ variable "route_dest_range" {
 variable "routing_mode" {
   type = string
 }
+
+variable "subnet_ip" {
+  type = string
+}
+
+variable "machine_image" {
+  type = string
+}
+
+variable "size" {
+  type = number
+}
+
+variable "ip_cidr_range_db" {
+  type = string
+}
+
+variable "ip_cidr_range_webapp" {
+  type = string
+}
+
+variable "zone" {
+  type = string
+}
+
+variable "machine_type" {
+  type = string
+}
+
+variable "webapp_port" {
+  type = number
+}
