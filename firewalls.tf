@@ -14,18 +14,18 @@ resource "google_compute_firewall" "allow_http_3000" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_firewall" "deny_ssh" {
-  count     = var.var_count
-  name      = "${var.app_name}-deny-ssh-${count.index}"
-  network   = google_compute_network.vpc[count.index].id
-  direction = "INGRESS"
-  priority  = 1000
+# resource "google_compute_firewall" "deny_ssh" {
+#   count     = var.var_count
+#   name      = "${var.app_name}-deny-ssh-${count.index}"
+#   network   = google_compute_network.vpc[count.index].id
+#   direction = "INGRESS"
+#   priority  = 1000
 
-  deny {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
+#   deny {
+#     protocol = "tcp"
+#     ports    = ["22"]
+#   }
 
-  source_ranges = ["0.0.0.0/0"]
-}
+#   source_ranges = ["0.0.0.0/0"]
+# }
 
