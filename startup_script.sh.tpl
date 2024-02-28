@@ -12,7 +12,7 @@
 cat <<EOF > /tmp/webapp/.env
 USER_NAME=${username}
 PASSWORD=${password}
-DATABASE=myDatabaseName
+DATABASE=${database}
 HOST=${host}
 PORT=${port}
 EOF
