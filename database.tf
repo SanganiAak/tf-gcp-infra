@@ -53,7 +53,7 @@ resource "google_sql_database" "database" {
 }
 
 resource "google_sql_user" "users" {
-  name     = "userMysql"
+  name     = "webapp"
   instance = google_sql_database_instance.mysql.name
   password = random_password.password.result
 }
