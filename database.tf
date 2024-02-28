@@ -9,7 +9,7 @@ resource "google_sql_database_instance" "mysql" {
     availability_type = var.availability_type
 
     backup_configuration {
-      enabled = true
+      enabled            = true
       binary_log_enabled = true
     }
 
@@ -22,10 +22,10 @@ resource "google_sql_database_instance" "mysql" {
     disk_size = var.mysql_disk_size
 
     location_preference {
-      zone = "us-east1-b"
+      zone = var.zone
     }
-
-  }
+    
+  } 
 }
 
 resource "google_compute_global_address" "private_ip_range" {
@@ -42,3 +42,14 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   reserved_peering_ranges = [google_compute_global_address.private_ip_range.name]
 }
 
+resource "google_sql_user" "users" {
+  name     = "userMysql"
+  instance = google_sql_database_instance.mysql.name
+  password = random_password.password.result
+}
+
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
+}

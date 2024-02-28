@@ -18,4 +18,13 @@ resource "google_compute_instance" "webapp_instance" {
   }
 
   tags = ["webapp-instance", "http-server"]
+
+  metadata_startup_script = templatefile("${path.module}/startup_script.sh.tpl", {
+    username = google_sql_user.users.name
+    password = random_password.password.result
+    database = google_sql_database_instance.mysql.name
+    host     = google_sql_database_instance.mysql.private_ip_address
+    # host     = google_sql_database_instance.mysql.first_ip_configuration.0.ip_address
+    port     = "3000" 
+  })
 }

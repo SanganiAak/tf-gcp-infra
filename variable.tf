@@ -69,7 +69,7 @@ variable "webapp_port" {
 }
 
 variable "gcp_mysql" {
-  type = string
+  type    = string
   default = "mysql-gcp"
 }
 
@@ -79,7 +79,7 @@ variable "availability_type" {
 }
 
 variable "database_version" {
-  type = number
+  type    = number
   default = 8
 }
 
@@ -89,7 +89,7 @@ variable "deletion_protection" {
 }
 
 variable "gcp_ipv4_enabled" {
-  type = bool
+  type    = bool
   default = false
 }
 
