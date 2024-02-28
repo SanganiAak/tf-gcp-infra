@@ -67,3 +67,38 @@ variable "machine_type" {
 variable "webapp_port" {
   type = number
 }
+
+variable "gcp_mysql" {
+  type    = string
+  default = "mysql-gcp"
+}
+
+variable "availability_type" {
+  type    = string
+  default = "REGIONAL"
+}
+
+variable "database_version" {
+  type    = number
+  default = 8
+}
+
+variable "deletion_protection" {
+  type    = bool
+  default = false
+}
+
+variable "gcp_ipv4_enabled" {
+  type    = bool
+  default = false
+}
+
+variable "mysql_disk_type" {
+  type    = string
+  default = "pd-ssd"
+}
+
+variable "mysql_disk_size" {
+  type    = number
+  default = 100
+}
