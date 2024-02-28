@@ -42,6 +42,11 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   reserved_peering_ranges = [google_compute_global_address.private_ip_range.name]
 }
 
+resource "google_sql_database" "database" {
+  name     = "myDatabaseName"
+  instance = google_sql_database_instance.mysql.name
+}
+
 resource "google_sql_user" "users" {
   name     = "userMysql"
   instance = google_sql_database_instance.mysql.name
