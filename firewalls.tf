@@ -21,7 +21,7 @@ resource "google_compute_firewall" "deny_ssh" {
   direction = "INGRESS"
   priority  = 1000
 
-  deny {
+  allow {
     protocol = "tcp"
     ports    = ["22"]
   }

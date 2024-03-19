@@ -24,7 +24,12 @@ resource "google_compute_instance" "webapp_instance" {
     password = random_password.password.result
     database = google_sql_database.database.name
     host     = google_sql_database_instance.mysql.private_ip_address
-    # host     = google_sql_database_instance.mysql.first_ip_configuration.0.ip_address
     port = "3000"
   })
+
+  # allow_stopping_for_update = true
+  service_account {
+    scopes = ["https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/cloud-platform"]
+    email = google_service_account.service_account.email
+  }
 }
