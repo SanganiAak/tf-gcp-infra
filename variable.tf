@@ -102,10 +102,3 @@ variable "mysql_disk_size" {
   type    = number
   default = 100
 }
-
-locals {
-  sql_database = {
-    user     = "webapp"
-    database = "myDatabaseName"
-  }
-}

@@ -20,16 +20,16 @@ resource "google_compute_instance" "webapp_instance" {
   tags       = ["webapp-instance", "http-server"]
 
   metadata_startup_script = templatefile("${path.module}/startup_script.sh.tpl", {
-    username = local.sql_database.user
+    username = google_sql_user.users.name
     password = random_password.password.result
-    database = local.sql_database.database
+    database = google_sql_database.database.name
     host     = google_sql_database_instance.mysql.private_ip_address
-    port = "3000"
+    port     = "3000"
   })
 
   # allow_stopping_for_update = true
   service_account {
-    scopes = ["https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/cloud-platform"]
-    email = google_service_account.service_account.email
+    scopes = ["https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/cloud-platform"]
+    email  = google_service_account.service_account.email
   }
 }
