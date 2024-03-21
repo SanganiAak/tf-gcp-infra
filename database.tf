@@ -18,8 +18,6 @@ resource "google_sql_database_instance" "mysql" {
 
     ip_configuration {
       ipv4_enabled = var.gcp_ipv4_enabled
-      # private_network = google_service_networking_connection.private_vpc_connection.network
-      # enable_private_path_for_google_cloud_services = true
       private_network = google_compute_network.vpc.id
     }
 
@@ -48,12 +46,12 @@ resource "google_service_networking_connection" "private_vpc_connection" {
 }
 
 resource "google_sql_database" "database" {
-  name     = "myDatabaseName"
+  name     = local.sql_database.database
   instance = google_sql_database_instance.mysql.name
 }
 
 resource "google_sql_user" "users" {
-  name     = "webapp"
+  name     = local.sql_database.user
   instance = google_sql_database_instance.mysql.name
   password = random_password.password.result
 }
@@ -62,4 +60,8 @@ resource "random_password" "password" {
   length           = 16
   special          = true
   override_special = "!#$%&*()-_=+[]{}<>:?"
+  keepers = {
+    instance = google_sql_database_instance.mysql.name
+  }
 }
+
