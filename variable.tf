@@ -119,3 +119,7 @@ variable "BASE_LINK" {
 variable "function_entry_point" {
   type = string
 }
+
+variable "zip_file_for_Bucket" {
+  type = string
+}
