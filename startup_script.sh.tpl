@@ -9,7 +9,7 @@
 # EOF
 
 
-cat <<EOF > /tmp/webapp/.env
+sudo tee /tmp/webapp/.env > /dev/null <<'EOF'
 USER_NAME=${username}
 PASSWORD=${password}
 DATABASE=${database}

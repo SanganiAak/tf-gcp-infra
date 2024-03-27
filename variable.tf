@@ -79,7 +79,7 @@ variable "availability_type" {
 }
 
 variable "database_version" {
-  type    = number
+  type    = string
   default = 8
 }
 
@@ -101,4 +101,25 @@ variable "mysql_disk_type" {
 variable "mysql_disk_size" {
   type    = number
   default = 100
+}
+
+variable "MAILGUN_DOMAIN" {
+  type = string
+}
+
+variable "MAILGUN_API_KEY" {
+  type = string
+
+}
+
+variable "BASE_LINK" {
+  type = string
+}
+
+variable "function_entry_point" {
+  type = string
+}
+
+variable "zip_file_for_Bucket" {
+  type = string
 }
