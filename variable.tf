@@ -123,3 +123,11 @@ variable "function_entry_point" {
 variable "zip_file_for_Bucket" {
   type = string
 }
+
+variable "min_replicas" {
+  type = number
+}
+
+variable "max_replicas" {
+  type = number
+}

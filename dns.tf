@@ -4,6 +4,6 @@ resource "google_dns_record_set" "a" {
   type         = "A"
   ttl          = 300
 
-  rrdatas    = [google_compute_global_forwarding_rule.default.ip_address]
+  rrdatas    = [google_compute_global_address.webapp.address]
   depends_on = [google_compute_global_forwarding_rule.default]
 }
