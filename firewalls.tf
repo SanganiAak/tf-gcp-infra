@@ -10,7 +10,10 @@ resource "google_compute_firewall" "allow_http_3000" {
     protocol = "tcp"
     ports    = ["${var.webapp_port}"]
   }
-
+  allow {
+    protocol = "tcp"
+    ports    = ["443"]
+  }
   source_ranges = ["0.0.0.0/0"]
 }
 
@@ -21,7 +24,7 @@ resource "google_compute_firewall" "deny_ssh" {
   direction = "INGRESS"
   priority  = 1000
 
-  deny {
+  allow {
     protocol = "tcp"
     ports    = ["22"]
   }
@@ -42,3 +45,21 @@ resource "google_compute_firewall" "database_allow" {
 
   source_ranges = ["0.0.0.0/0"]
 }
+
+# resource "google_compute_firewall" "lb"{
+#   name      = "database-allow-port"
+#   network   = google_compute_network.vpc.id
+#   direction = "INGRESS"
+#   priority  = 1000
+
+#   allow {
+#     protocol = "http"
+#     ports    = ["3000"]
+#   }
+#   allow {
+#     protocol = "https"
+#     ports    = ["443"]
+#   }
+
+#   source_ranges = ["130.211.0.0/22", "35.191.0.0/16"] # Google Load Balancer IP ranges
+# }

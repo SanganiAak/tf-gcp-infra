@@ -10,6 +10,6 @@ output "db_subnet_id" {
   value = google_compute_subnetwork.db.id
 }
 
-output "google_compute_instance_id" {
-  value = google_compute_instance.webapp_instance.id
-}
+# output "google_compute_instance_id" {
+#   value = google_compute_instance.webapp_instance.id
+# }
