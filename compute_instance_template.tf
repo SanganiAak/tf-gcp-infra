@@ -66,10 +66,13 @@ resource "google_compute_region_instance_group_manager" "webapp_manager" {
   version {
     instance_template = google_compute_region_instance_template.webapp_template.id
   }
-  target_size = 1
 
   auto_healing_policies {
     health_check      = google_compute_health_check.webapp_health_check.id
     initial_delay_sec = 300
+  }
+  named_port {
+    name = "http"
+    port = 3000
   }
 }
