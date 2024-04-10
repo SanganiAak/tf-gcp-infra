@@ -131,3 +131,15 @@ variable "min_replicas" {
 variable "max_replicas" {
   type = number
 }
+
+variable "key_ring_name" {
+  type = string
+}
+
+variable "sql_service_account_email" {
+  type = string
+}
+
+variable "vm_service_account_email" {
+  type = string
+}
