@@ -31,6 +31,7 @@ resource "google_sql_database_instance" "mysql" {
     }
 
   }
+  encryption_key_name = google_kms_crypto_key.sql_key.id
 }
 
 resource "google_compute_global_address" "private_ip_range" {
@@ -60,6 +61,6 @@ resource "google_sql_user" "users" {
 
 resource "random_password" "password" {
   length           = 16
-  special          = true
+  special          = false
   override_special = "!#$%&*()-_=+[]{}<>:?"
 }

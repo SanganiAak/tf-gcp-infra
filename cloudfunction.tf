@@ -1,6 +1,9 @@
 resource "google_storage_bucket" "bucket" {
   name     = "serverless_csye6225"
-  location = "US"
+  location = var.region
+  encryption {
+    default_kms_key_name = google_kms_crypto_key.storage_key.id
+  }
 }
 
 resource "google_storage_bucket_object" "archive" {
