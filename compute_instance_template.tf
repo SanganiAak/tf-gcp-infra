@@ -7,6 +7,9 @@ resource "google_compute_region_instance_template" "webapp_template" {
     auto_delete  = true
     boot         = true
     disk_size_gb = var.size
+    disk_encryption_key {
+      kms_key_self_link = google_kms_crypto_key.vm_key.id
+    }
   }
 
   network_interface {
